@@ -6,7 +6,7 @@
 
 ## Overview
 
-Understory Index is a digital field guide to London's boundless mycological magic, bringing together community observations, photographs & ecological records through the iNaturalist API.
+Understory Index is a digital field guide to London's boundless mycological magic, bringing together community observations, photographs & ecological records through the iNaturalist API!
 
 Part field guide, part experiment in information design, the project explores how biodiversity data can be organised, interpreted & experienced beyond the conventions of a scientific database.
 
