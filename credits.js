@@ -1,4 +1,3 @@
-
 const CREDITS_KEY = "understory-photo-credits";
 
 const API_URL =
@@ -40,7 +39,7 @@ function getPhotographer(photoData, observation) {
   );
 }
 
-// Retrieves credits saved during the current index session
+// retrieves credits saved during the current index session
 function getSavedCredits() {
   try {
     const saved = sessionStorage.getItem(CREDITS_KEY);
@@ -53,7 +52,7 @@ function getSavedCredits() {
   }
 }
 
-// Fetches photographic records when no saved credits exist
+// fetches photo records when no saved credits exist
 async function fetchCredits() {
   const response = await fetch(`${API_URL}&page=1`);
 
@@ -64,7 +63,7 @@ async function fetchCredits() {
   const observations = await response.json();
 
   if (!Array.isArray(observations)) {
-    throw new Error("Unexpected API response format");
+    throw new Error("unexpected API response format");
   }
 
   const credits = [];
@@ -116,7 +115,7 @@ async function fetchCredits() {
   return credits;
 }
 
-// Displays the photographic credits
+// displays photo credits
 function renderCredits(credits) {
   container.replaceChildren();
 
@@ -164,7 +163,7 @@ function renderCredits(credits) {
   });
 }
 
-// Initialises the credits page
+// initialises credits page
 async function initialiseCredits() {
   const savedCredits = getSavedCredits();
 

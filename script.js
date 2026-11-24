@@ -1,4 +1,3 @@
-
 const API_URL =
   "https://www.inaturalist.org/observations.json" +
   "?taxon_id=47170" +
@@ -32,7 +31,7 @@ function saveCredits() {
       JSON.stringify(photoCredits)
     );
   } catch (error) {
-    console.warn("Could not save photo credits:", error);
+    console.warn("could not save photo credits:", error);
   }
 }
 
@@ -43,11 +42,11 @@ function getPhotographer(photoData, observation) {
   return (
     match?.[1]?.trim() ||
     observation.user?.login ||
-    "Unknown photographer"
+    "unknown photographer"
   );
 }
 
-// Retrieves fungal observations from iNaturalist
+// retrieves observation data from iNaturalist
 async function getFungi() {
   const status = document.getElementById("status");
   const container = document.getElementById("observations");
@@ -64,7 +63,7 @@ async function getFungi() {
   status.textContent =
     totalLoaded === 0
       ? "connecting to wood wide web..."
-      : "following the mycelial network...";
+      : "tracing mycelial network...";
 
   try {
     const response = await fetch(
@@ -78,10 +77,10 @@ async function getFungi() {
     const observations = await response.json();
 
     if (!Array.isArray(observations)) {
-      throw new Error("Unexpected API response format");
+      throw new Error("unexpected API response format");
     }
 
-    // Creates a card for each eligible observation
+    // creates a card for each eligible observation
     observations.forEach((observation) => {
       if (
         observation.id == null ||
@@ -90,7 +89,7 @@ async function getFungi() {
         return;
       }
 
-      // Selects only photographs with approved licences
+      // selects only photographs with approved licences
       const photoData = observation.photos?.find((photo) => {
         const license = String(
           photo.license_code || ""
@@ -109,7 +108,7 @@ async function getFungi() {
       displayedObservations.add(observation.id);
 
       const scientificName =
-        observation.taxon?.name || "Unidentified";
+        observation.taxon?.name || "unidentified";
 
       const commonName =
         observation.taxon?.common_name?.name ||
@@ -117,9 +116,9 @@ async function getFungi() {
         scientificName;
 
       const photo = photoData.large_url;
-      const date = observation.observed_on || "Unknown";
+      const date = observation.observed_on || "unknown";
       const location =
-        observation.place_guess || "Greater London";
+        observation.place_guess || "greater london";
 
       const photographer = getPhotographer(
         photoData,
@@ -135,7 +134,7 @@ async function getFungi() {
 
       const specimenNumber = totalLoaded + 1;
 
-      // Records photographic attribution
+      // records photographic attribution
       photoCredits.push({
         specimenNumber,
         observationId: observation.id,
@@ -149,11 +148,11 @@ async function getFungi() {
         photoUrl: photo
       });
 
-      // Specimen card
+      // pokemon card
       const card = document.createElement("article");
       card.className = "fungus-card";
 
-      // Specimen header
+      // card header
       const header = document.createElement("div");
       header.className = "card-header";
 
@@ -166,7 +165,7 @@ async function getFungi() {
 
       header.append(number, category);
 
-      // Photograph container
+      // photo container
       const imageWrapper = document.createElement("div");
       imageWrapper.className = "image-wrapper";
 
@@ -177,7 +176,7 @@ async function getFungi() {
 
       imageWrapper.appendChild(image);
 
-      // Photograph overlay
+      // overlay
       const photoCredit = document.createElement("span");
       photoCredit.className = "photo-credit";
       photoCredit.textContent = `photo: ${photographer}`;
@@ -190,22 +189,22 @@ async function getFungi() {
         photoCredit.textContent
       );
 
-      // Common name
+      // common name
       const title = document.createElement("h2");
       title.textContent = commonName;
       title.title = commonName;
 
-      // Scientific name
+      // scientific name
       const scientific = document.createElement("p");
       scientific.className = "scientific-name";
       scientific.textContent = scientificName;
       scientific.title = scientificName;
 
-      // Divider
+      // divider
       const divider = document.createElement("div");
       divider.className = "card-divider";
 
-      // Observation metadata
+      // observation metadata
       const details = document.createElement("div");
       details.className = "card-details";
 
@@ -226,7 +225,7 @@ async function getFungi() {
       addDetail("OBSERVED", date);
       addDetail("LOCATION", location);
 
-      // Original observation link
+      // original observation link
       const link = document.createElement("a");
       link.className = "observation-link";
       link.href = observationUrl;
@@ -234,7 +233,7 @@ async function getFungi() {
       link.rel = "noopener noreferrer";
       link.textContent = "VIEW ORIGINAL OBSERVATION";
 
-      // Assembles specimen card
+      // assembles specimen card
       card.append(
         header,
         imageWrapper,
@@ -249,10 +248,10 @@ async function getFungi() {
       totalLoaded += 1;
     });
 
-    // Saves credits after each successful batch
+    // saves credits after each successful batch
     saveCredits();
 
-    // Advances pagination
+    // advances pagination
     currentPage += 1;
     hasMore = observations.length === PAGE_SIZE;
 
@@ -289,7 +288,7 @@ async function getFungi() {
   }
 }
 
-// Starts a fresh index session
+// starts a fresh index session
 saveCredits();
 
 document.getElementById("load-more").addEventListener(
