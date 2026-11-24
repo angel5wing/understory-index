@@ -2,7 +2,7 @@
 
 *Exploring London's fungal biodiversity through experimental information design!*
 
-[Discover for yourself here:](https://angel5wing.github.io/understory-index/)
+[Discover for yourself here 🍄 ⋆ ˙ ⟡](https://angel5wing.github.io/understory-index/)
 
 ## Overview
 
