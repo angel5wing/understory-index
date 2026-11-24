@@ -1,0 +1,553 @@
+
+:root {
+  --background: #17151c;
+  --surface: #26212d;
+  --border: #59475f;
+  --text: #e9dfeb;
+  --muted: #a99bab;
+  --lavender: #d9b8e6;
+  --moss: #a5b5a0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 48px 32px;
+  background: var(--background);
+  color: var(--text);
+  font-family: Georgia, serif;
+}
+
+/* Main layout */
+
+main {
+  max-width: 1320px;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: normal;
+  letter-spacing: -0.04em;
+  margin: 0 0 8px;
+}
+
+main > p {
+  color: var(--muted);
+}
+
+#status {
+  margin: 40px 0 28px;
+  font-size: 0.95rem;
+}
+
+/* Specimen grid */
+
+#observations {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Specimen cards */
+
+.fungus-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.fungus-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--lavender);
+  box-shadow: 0 8px 30px #00000035;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--moss);
+  font-family: monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+
+.image-wrapper {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #1b1920;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.image-wrapper img {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.fungus-card:hover img {
+  transform: scale(1.04);
+}
+
+.fungus-card h2 {
+  color: var(--lavender);
+  font-size: 1.25rem;
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 20px 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scientific-name {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.9rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.card-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 0.75rem;
+}
+
+.detail-row span:first-child {
+  color: var(--moss);
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.detail-row span:last-child {
+  color: var(--text);
+  text-align: right;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.observation-link {
+  display: block;
+  margin-top: auto;
+  padding: 12px 8px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--lavender);
+  text-decoration: none;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  overflow-wrap: anywhere;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.observation-link:hover {
+  background: #403348;
+  border-color: var(--lavender);
+}
+
+/* Liquid glass pagination button */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 48px 0 40px;
+}
+
+#load-more {
+  appearance: none;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: 100%;
+  padding: 17px 42px;
+  border-radius: 999px;
+  background: linear-gradient(
+    175deg,
+    rgba(218, 239, 214, 0.42) 0%,
+    rgba(165, 181, 160, 0.18) 38%,
+    rgba(91, 132, 101, 0.28) 75%,
+    rgba(191, 221, 187, 0.42) 100%
+  );
+  border: 1px solid rgba(220, 242, 215, 0.85);
+  color: #e4f1df;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 3px rgba(210, 239, 204, 0.55),
+    inset 0 0 12px rgba(216, 241, 210, 0.14),
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    0 0 22px rgba(165, 181, 160, 0.12);
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* Sharp upper glass reflection */
+
+#load-more::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 7%;
+  width: 86%;
+  height: 43%;
+  border-radius: 999px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.52),
+    rgba(255, 255, 255, 0.12) 35%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Illuminated lower glass edge */
+
+#load-more::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 12%;
+  width: 76%;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(221, 247, 215, 0.6);
+  filter: blur(6px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hover effect */
+
+#load-more:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: linear-gradient(
+    175deg,
+    rgba(218, 239, 214, 0.52),
+    rgba(165, 181, 160, 0.24),
+    rgba(91, 132, 101, 0.38),
+    rgba(191, 221, 187, 0.5)
+  );
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px rgba(210, 239, 204, 0.7),
+    0 12px 28px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(165, 181, 160, 0.22);
+}
+
+/* Pressed effect */
+
+#load-more:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Keyboard accessibility */
+
+#load-more:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 5px;
+}
+
+/* Disabled state */
+
+#load-more:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Hidden state */
+
+#load-more[hidden] {
+  display: none;
+}
+
+/* Photographic attribution overlay */
+
+.photo-credit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 10px;
+  background: rgba(23, 21, 28, 0.88);
+  color: var(--text);
+  font-family: monospace;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.image-wrapper:hover .photo-credit,
+.image-wrapper:focus .photo-credit,
+.image-wrapper:focus-within .photo-credit {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-wrapper:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 3px;
+}
+
+@media (hover: none) {
+  .photo-credit {
+    opacity: 1;
+    visibility: visible;
+    font-size: 0.55rem;
+    padding: 6px;
+  }
+}
+
+/* Site navigation */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 0 18px;
+  margin-bottom: 42px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Archival identifier */
+
+.archive-identifier {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--moss);
+  font-family: monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+
+.archive-symbol {
+  color: var(--moss);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* Navigation links */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  position: relative;
+  padding: 8px 0;
+  color: var(--muted);
+  font-family: monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: lowercase;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--lavender);
+}
+
+/* Active page indicator */
+
+.nav-link.active {
+  color: var(--lavender);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--moss);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+
+/* About page links */
+
+.about-content a,
+.about-content a:visited {
+  color: var(--lavender);
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.about-content a:hover,
+.about-content a:focus-visible {
+  color: var(--moss);
+  text-decoration-color: currentColor;
+}
+
+/* About page reading column */
+
+.about-content {
+  max-width: 760px;
+  line-height: 1.7;
+}
+
+.about-content p {
+  margin-bottom: 1.25rem;
+}
+
+.about-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Responsive specimen grid */
+
+@media (max-width: 1100px) {
+  #observations {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  #observations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  #observations {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+  body {
+    padding: 28px 18px;
+  }
+
+  .site-nav {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .archive-identifier {
+    font-size: 0.55rem;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .nav-link {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .site-nav {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    margin-left: auto;
+  }
+
+  .site-header h1 {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  #load-more,
+  .photo-credit,
+  .nav-link,
+  .fungus-card,
+  .image-wrapper img {
+    transition: none;
+  }
+
+  #load-more:hover:not(:disabled),
+  #load-more:active:not(:disabled),
+  .fungus-card:hover,
+  .fungus-card:hover img {
+    transform: none;
+  }
+}

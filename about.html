@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="about understory index, an experimental archive of fungal observations across london.">
+  <title>about | understory index</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+
+    <!-- Navigation -->
+    <nav class="site-nav" aria-label="main navigation">
+      <div class="archive-identifier">
+        <span class="archive-symbol" aria-hidden="true">𖧧</span>
+        <span>powered by iNaturalist</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">index</a>
+        <a href="about.html" class="nav-link active" aria-current="page">about</a>
+        <a href="credits.html" class="nav-link">credits</a>
+      </div>
+    </nav>
+
+    <!-- About -->
+    <header class="site-header">
+      <h1>what is this?</h1>
+    </header>
+
+    <section class="about-content">
+
+      <h2>a living archive of local fungi, of course!</h2>
+
+      <p>
+        understory index is a digital field guide to london's boundless mycological magic, 
+        bringing together community observations, photographs & 
+        ecological records through the iNaturalist API.
+      </p>
+
+      <p>
+      part field guide, part experiment in information design, the project explores how biodiversity data can be organised,
+      interpreted & experienced beyond the conventions of a scientific database.
+    </p>
+
+      <p>
+        built using observations contributed to
+        <a href="https://www.inaturalist.org/"
+           target="_blank"
+           rel="noopener noreferrer">iNaturalist</a>,
+        the project brings together photographs, species
+        identifications, observation dates & locations
+        to reveal some of the often-overlooked organisms
+        living right alongside us!
+      </p>
+
+      <h2>how does it work?</h2>
+
+      <p>
+        i'm so glad you asked! to keep it simple,
+
+        understory index retrieves local observational data directly from
+        the iNaturalist API using JavaScript.
+      </p>
+
+      <p>
+        each request returns structured JSON data, which
+        is processed and presented as an individual specimen
+        entry. visitors can explore additional observations
+        through pagination and follow links back to the
+        original community records.
+      </p>
+
+      <p>
+        the integration also accounts for incomplete records,
+        repeated observations and unsuccessful requests,
+        helping the index remain usable as new data
+        is retrieved.
+      </p>
+
+      <p>
+        because the images belong to their respective
+        creators, the index selects images with 'CC0' or
+        'CC BY' licences and maintains a dedicated
+        <a href="credits.html">credits page</a>
+        with photographer information, original sources
+        and licensing details.
+      </p>
+
+      <h2>future integrations</h2>
+
+      <p>
+        understory index currently presents fungal observations
+        as individual records, but fungi rarely exist in isolation!
+      </p>
+
+      <p>
+        future development will explore a second, relational
+        mode of discovery, connecting observations to the
+        wider ecological systems in which they exist.
+        by integrating additional biodiversity and environmental
+        datasets, the project could begin to reveal relationships
+        between fungi, plants, habitats, substrates and the
+        processes of decomposition and symbiosis.
+      </p>
+
+      <p>
+        the aim is to move beyond cataloguing individual
+        organisms towards an interface that makes ecological
+        interdependence more visible, transforming the index
+        from a collection of observations into an interconnected,
+        living archive.
+      </p>
+
+    </section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="photography credits for understory index">
+  <title>credits | understory index</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .credits-intro {
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 24px 0 40px;
+    }
+
+    .credits-list {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+}
+
+    .credit-entry {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+
+    .credit-entry h2 {
+      color: var(--lavender);
+      font-size: 1.2rem;
+      font-weight: normal;
+      margin: 0 0 12px;
+    }
+
+    .credit-entry p {
+      margin: 8px 0;
+      color: var(--text);
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .credit-entry a,
+    .credits-intro a {
+      color: var(--lavender);
+      text-underline-offset: 3px;
+    }
+
+    .credit-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 16px;
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+  </style>
+
+  <script src="credits.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <nav class="site-nav" aria-label="main navigation">
+      <div class="archive-identifier">
+        <span class="archive-symbol" aria-hidden="true">𖧧</span>
+        <span>powered by iNaturalist</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">index</a>
+        <a href="about.html" class="nav-link">about</a>
+        <a href="credits.html" class="nav-link active" aria-current="page">credits</a>
+      </div>
+    </nav>
+
+    <header class="site-header">
+      <h1>photography credits</h1>
+     <!-- <p>the people behind the observations</p> -->
+    </header>
+
+    <div class="credits-intro">
+      <p>
+        understory index uses photos contributed
+        to iNaturalist by members of its lovely community <3
+      </p>
+
+      <p>
+        the index page displays photos released under CC0 or
+        creative commons attribution licences. these beautiful images remain
+        the work of their respective creators!
+      </p>
+
+      <p>
+        the entries below credit photos loaded during your
+        current visit to the index. each includes a link to the
+        original observation and its licence :) 
+      </p>
+    </div>
+
+    <p id="credits-status" role="status"></p>
+
+    <section
+      id="credits-list"
+      class="credits-list"
+      aria-label="photographic credits"
+    ></section>
+  </main>
+</body>
+</html>
