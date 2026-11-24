@@ -20,7 +20,7 @@ body {
   font-family: Georgia, serif;
 }
 
-/* Main layout */
+/* main layout */
 
 main {
   max-width: 1320px;
@@ -44,7 +44,7 @@ main > p {
   font-size: 0.95rem;
 }
 
-/* Specimen grid */
+/* specimen grid */
 
 #observations {
   display: grid;
@@ -52,7 +52,7 @@ main > p {
   gap: 20px;
 }
 
-/* Specimen cards */
+/* specimen cards */
 
 .fungus-card {
   position: relative;
@@ -193,7 +193,7 @@ main > p {
   border-color: var(--lavender);
 }
 
-/* Liquid glass pagination button */
+/* liquid glass button (pagination) */
 
 .pagination {
   display: flex;
@@ -238,7 +238,7 @@ main > p {
     background 0.25s ease;
 }
 
-/* Sharp upper glass reflection */
+/* sharp upper glass reflection */
 
 #load-more::before {
   content: "";
@@ -258,7 +258,7 @@ main > p {
   z-index: -1;
 }
 
-/* Illuminated lower glass edge */
+/* illuminated lower glass edge */
 
 #load-more::after {
   content: "";
@@ -274,7 +274,7 @@ main > p {
   z-index: -1;
 }
 
-/* Hover effect */
+/* cool hover effect */
 
 #load-more:hover:not(:disabled) {
   transform: translateY(-3px);
@@ -292,33 +292,33 @@ main > p {
     0 0 30px rgba(165, 181, 160, 0.22);
 }
 
-/* Pressed effect */
+/* pressed effect */
 
 #load-more:active:not(:disabled) {
   transform: translateY(1px) scale(0.98);
 }
 
-/* Keyboard accessibility */
+/* keyboard accessibility */
 
 #load-more:focus-visible {
   outline: 2px solid var(--moss);
   outline-offset: 5px;
 }
 
-/* Disabled state */
+/* disabled state */
 
 #load-more:disabled {
   opacity: 0.6;
   cursor: wait;
 }
 
-/* Hidden state */
+/* hidden state */
 
 #load-more[hidden] {
   display: none;
 }
 
-/* Photographic attribution overlay */
+/* image attribution overlay */
 
 .photo-credit {
   position: absolute;
@@ -362,7 +362,7 @@ main > p {
   }
 }
 
-/* Site navigation */
+/* site navigation */
 
 .site-nav {
   display: flex;
@@ -374,7 +374,7 @@ main > p {
   border-bottom: 1px solid var(--border);
 }
 
-/* Archival identifier */
+/* archival identifier */
 
 .archive-identifier {
   display: flex;
@@ -392,7 +392,7 @@ main > p {
   line-height: 1;
 }
 
-/* Navigation links */
+/* navigation links */
 
 .nav-links {
   display: flex;
@@ -416,7 +416,7 @@ main > p {
   color: var(--lavender);
 }
 
-/* Active page indicator */
+/* active page indicator */
 
 .nav-link.active {
   color: var(--lavender);
@@ -438,7 +438,7 @@ main > p {
   border-radius: 2px;
 }
 
-/* About page links */
+/* about page links */
 
 .about-content a,
 .about-content a:visited {
@@ -456,7 +456,7 @@ main > p {
   text-decoration-color: currentColor;
 }
 
-/* About page reading column */
+/* about page reading column */
 
 .about-content {
   max-width: 760px;
@@ -472,7 +472,7 @@ main > p {
   margin-bottom: 0.75rem;
 }
 
-/* Responsive specimen grid */
+/* responsive specimen grid */
 
 @media (max-width: 1100px) {
   #observations {
@@ -492,7 +492,7 @@ main > p {
   }
 }
 
-/* Mobile layout */
+/* mobile layout */
 
 @media (max-width: 600px) {
   body {
@@ -532,7 +532,7 @@ main > p {
   }
 }
 
-/* Reduced motion */
+/* reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
   #load-more,
