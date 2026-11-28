@@ -493,7 +493,7 @@ Understory Index does not require a package manager, build process, API key or b
 ### 1. Clone the repository
 
 ```bash
-git clone https://angel5wing.github.io/understory-index
+git clone https://github.com/angel5wing/understory-index.git
 ```
 
 ### 2. Navigate to the project directory
